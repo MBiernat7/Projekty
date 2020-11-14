@@ -1,0 +1,22 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Add task</mat-label>
+      <input matInput #message minlength="5" placeholder="Enter task name" [(ngModel)]="task.name" [ngModelOptions]="{standalone: true}">
+      <mat-hint align="start"><strong>Min. 5 characters</strong> </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="quarter-width">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="task.deadline" [ngModelOptions]="{standalone: true}">
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint align="start"><strong>Due Date</strong> </mat-hint>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="addTask()">Add</button>
+  </form>
+
+
+

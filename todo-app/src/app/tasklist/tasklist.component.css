@@ -1,0 +1,18 @@
+mat-list-item {
+  background-color: rgb(196, 255, 173);
+  box-shadow: 2px 2px 2px rgb(165, 165, 165), 0 0 3px rgb(167, 167, 167);
+  margin: 5px 0 ;
+}
+
+.done {
+  background-color: rgb(255, 173, 173);
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: rgb(43, 43, 43);
+  box-shadow: 2px 2px 2px rgb(165, 165, 165), 0 0 3px rgb(167, 167, 167);
+  padding: 15px;
+  margin-bottom: 0px;
+  background-color: rgb(230, 230, 230);
+}
