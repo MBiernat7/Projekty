@@ -18,8 +18,4 @@ export class AppComponent {
   onNewTask(task: Task) {
     this.tasks.push(task);
   }
-
-  onComplete(task: Task) {
-    this.tasksdone.push(task);
-  }
 }

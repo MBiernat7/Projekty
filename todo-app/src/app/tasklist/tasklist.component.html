@@ -1,38 +1,43 @@
 <div style="display:flex; justify-content: flex-start;">
   <mat-list role="list" style="width: 50%; margin-right: 10px;">
     <h2>To do</h2>
-  <mat-list-item role="listitem" *ngFor="let task of tasks; let i = index">
+    <ng-container *ngFor="let task of tasks; let i = index">
+  <mat-list-item role="listitem" *ngIf="task.done === false;">
 
     <mat-icon mat-list-icon>event</mat-icon>
     <div mat-line><strong>{{task.name}}</strong></div>
     <div mat-line> {{task.deadline | date: 'mediumDate'}} </div>
 
     <div>
-    <button mat-raised-button (click)="markAsDone()" style="transform: scale(0.85); background-color:rgb(0, 146, 0); color: white;">
+    <button mat-raised-button (click)="markAsDone(i, task)" style="transform: scale(0.85); background-color:rgb(0, 146, 0); color: white;">
       Mark as complete
     </button>
     <button mat-raised-button color="accent" style="transform: scale(0.85);">
       Edit
     </button>
-    <button mat-raised-button color="warn" style="transform: scale(0.85)">
+    <button mat-raised-button (click)="deleteTask(i)" color="warn" style="transform: scale(0.85)">
       Delete
     </button>
     </div>
 
   </mat-list-item>
+  </ng-container>
   </mat-list>
 
   <mat-list role="list" style="width: 50%; margin-left: 10px;">
     <h2>Done</h2>
-    <mat-list-item class="done" role="listitem" *ngFor="let task of tasks; let i = index">
+    <ng-container *ngFor="let task of tasksdone; let i = index">
+    <mat-list-item class="done" role="listitem" *ngIf="task.done === true;">
+
         <mat-icon mat-list-icon>event</mat-icon>
         <div mat-line style="text-decoration: line-through;">{{task.name}}</div>
        <div mat-line>{{task.deadline | date: 'mediumDate'}}</div>
-        <button mat-raised-button color="warn" aria-label="Example icon button with a delete icon" style="transform: scale(0.85)">
+        <button mat-raised-button (click)="deleteTaskDone(i)" color="warn" style="transform: scale(0.85)">
           Delete
        </button>
 
     </mat-list-item>
+    </ng-container>
     </mat-list>
   </div>
 

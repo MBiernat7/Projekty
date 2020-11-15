@@ -1,5 +1,4 @@
-
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {Task} from '../task';
 import { TASKS } from '../taskdata';
 import { TASKSDONE } from '../taskdone';
@@ -10,8 +9,8 @@ import { TASKSDONE } from '../taskdone';
   styleUrls: ['./tasklist.component.css']
 })
 export class TasklistComponent implements OnInit {
-  @Output() markDone = new EventEmitter<Task>();
   @Input() tasks: Task[] = TASKS;
+  @Input() tasksdone: Task[] = TASKSDONE;
   task: Task = {name: '', deadline: '', done: false};
 
   constructor() { }
@@ -19,9 +18,19 @@ export class TasklistComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  markAsDone(task: Task) {
-    this.task.done = true;
-    this.markDone.emit(this.task);
+  markAsDone(i: number, task: Task) {
+    this.tasks.splice(i, 1);
+    this.task = task;
+    task.done = true;
+    this.tasksdone.push(this.task);
+  }
+
+  deleteTask(i: number) {
+    this.tasks.splice(i, 1);
+  }
+
+  deleteTaskDone(i: number) {
+    this.tasksdone.splice(i, 1);
   }
 
 }
