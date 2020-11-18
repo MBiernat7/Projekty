@@ -12,7 +12,7 @@
     <button mat-raised-button (click)="markAsDone(i, task)" style="transform: scale(0.85); background-color:rgb(0, 146, 0); color: white;">
       Mark as complete
     </button>
-    <button mat-raised-button color="accent" style="transform: scale(0.85);">
+    <button mat-raised-button (click)="editTask()" color="accent" style="transform: scale(0.85);">
       Edit
     </button>
     <button mat-raised-button (click)="deleteTask(i)" color="warn" style="transform: scale(0.85)">
@@ -30,7 +30,7 @@
     <mat-list-item class="done" role="listitem" *ngIf="task.done === true;">
 
         <mat-icon mat-list-icon>event</mat-icon>
-        <div mat-line style="text-decoration: line-through;">{{task.name}}</div>
+        <div mat-line>{{task.name}}</div>
        <div mat-line>{{task.deadline | date: 'mediumDate'}}</div>
         <button mat-raised-button (click)="deleteTaskDone(i)" color="warn" style="transform: scale(0.85)">
           Delete

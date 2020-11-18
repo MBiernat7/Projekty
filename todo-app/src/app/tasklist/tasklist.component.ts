@@ -33,4 +33,8 @@ export class TasklistComponent implements OnInit {
     this.tasksdone.splice(i, 1);
   }
 
+  editTask() {
+
+  }
+
 }
