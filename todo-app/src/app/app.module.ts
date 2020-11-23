@@ -8,6 +8,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TaskinputComponent } from './taskinput/taskinput.component';
 import { TasklistComponent } from './tasklist/tasklist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterTaskPipe } from './filterTask.pipe';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     ToolbarComponent,
     TaskinputComponent,
-    TasklistComponent
+    TasklistComponent,
+    FilterTaskPipe
   ],
   imports: [
     BrowserModule,

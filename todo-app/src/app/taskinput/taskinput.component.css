@@ -1,13 +1,11 @@
 .example-form {
     display: flex;
-    justify-content: flex-start;
-    min-width: 150px;
-    max-width: 700px;
-    width: 100%;
+    justify-content: space-between;
   }
 
-  .example-full-width {
-    width: 100%;
+  .half-width {
+    min-width: 250px;
+    max-width: 450px;
   }
 
   .quarter-width {
@@ -15,6 +13,6 @@
   }
 
   button {
-      margin: 15px;
+      margin-left: 15px;
   }
 

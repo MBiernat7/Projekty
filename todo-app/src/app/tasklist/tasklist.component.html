@@ -1,7 +1,10 @@
 <div style="display:flex; justify-content: flex-start;">
   <mat-list role="list" style="width: 50%; margin-right: 10px;">
-    <h2>To do</h2>
-    <ng-container *ngFor="let task of tasks; let i = index">
+    <div class="task-header">
+      <h2>To do</h2>
+      <h2>{{this.tasks.length}}</h2>
+    </div>
+    <ng-container *ngFor="let task of tasks | filterTask: searchText; let i = index">
   <mat-list-item role="listitem" *ngIf="task.done === false;">
 
     <mat-icon mat-list-icon>event</mat-icon>
@@ -25,7 +28,10 @@
   </mat-list>
 
   <mat-list role="list" style="width: 50%; margin-left: 10px;">
-    <h2>Done</h2>
+    <div class="task-header">
+      <h2>Done</h2>
+      <h2>{{this.tasksdone.length}}</h2>
+    </div>
     <ng-container *ngFor="let task of tasksdone; let i = index">
     <mat-list-item class="done" role="listitem" *ngIf="task.done === true;">
 

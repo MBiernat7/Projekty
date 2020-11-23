@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import {Task} from './task'
-import { TASKS } from './taskdata';
-import { TASKSDONE } from './taskdone';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +7,4 @@ import { TASKSDONE } from './taskdone';
 })
 export class AppComponent {
   title = 'todo-app';
-
-  tasks: Task[] = TASKS;
-  tasksdone: Task[] = TASKSDONE;
-
-
-  onNewTask(task: Task) {
-    this.tasks.push(task);
-  }
 }

@@ -8,11 +8,17 @@ mat-list-item {
   background-color: rgb(255, 173, 173);
 }
 
-h2 {
-  font-size: 2.5rem;
+.task-header {
+  display: flex;
+  justify-content: space-between;
   color: rgb(43, 43, 43);
   box-shadow: 2px 2px 2px rgb(165, 165, 165), 0 0 3px rgb(167, 167, 167);
   padding: 15px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   background-color: rgb(230, 230, 230);
+}
+
+.task-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
 }

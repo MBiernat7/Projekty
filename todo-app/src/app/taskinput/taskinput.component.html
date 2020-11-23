@@ -1,7 +1,8 @@
 <form class="example-form" [formGroup]="taskForm" (ngSubmit)="addTask()">
-    <mat-form-field class="example-full-width">
+  <div>
+    <mat-form-field class="half-width">
       <mat-label>Add task</mat-label>
-      <input type="text" matInput #message minlength="5" placeholder="Enter task name" formControlName="taskName" [(ngModel)]="task.name">
+      <input type="text" matInput #message placeholder="Enter task name" formControlName="taskName" [(ngModel)]="task.name">
       <mat-hint align="start"><strong>Min. 5 characters</strong> </mat-hint>
     </mat-form-field>
 
@@ -15,6 +16,16 @@
     </mat-form-field>
 
     <button type="submit" mat-raised-button color="primary" [disabled]="!taskForm.valid">Add</button>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Search task</mat-label>
+      <input type="text" matInput placeholder="Start typing..." #searchBox (input)="search(searchBox.value)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
   </form>
 
 
