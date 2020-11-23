@@ -9,6 +9,7 @@ import { TaskinputComponent } from './taskinput/taskinput.component';
 import { TasklistComponent } from './tasklist/tasklist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterTaskPipe } from './filterTask.pipe';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FilterTaskPipe } from './filterTask.pipe';
     ToolbarComponent,
     TaskinputComponent,
     TasklistComponent,
-    FilterTaskPipe
+    FilterTaskPipe,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,9 @@ import { FilterTaskPipe } from './filterTask.pipe';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  entryComponents: [
+    EditDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

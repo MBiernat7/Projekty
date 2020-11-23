@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from '../task';
 import { TaskService } from '../task.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-tasklist',
@@ -13,7 +16,7 @@ export class TasklistComponent implements OnInit {
   task: Task = {name: '', deadline: '', done: false};
   searchText: string;
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getTasks()
@@ -35,8 +38,13 @@ export class TasklistComponent implements OnInit {
     this.tasksdone.splice(i, 1);
   }
 
-  editTask() {
+  editTask(task: Task): void {
+    let dialogRef = this.dialog.open(EditDialogComponent, {data: {name: task.name, deadline: task.deadline, done: task.done}});
 
+    dialogRef.afterClosed().subscribe(result => {
+      task.name = result[0];
+      task.deadline = result[1];
+    })
   }
 
   getTasks(): void {
