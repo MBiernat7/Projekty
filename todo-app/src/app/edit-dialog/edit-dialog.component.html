@@ -1,14 +1,14 @@
 <h2 mat-dialog-title>Edit Task</h2>
-<form class="example-form">
+<form class="example-form" [formGroup]="editForm">
   <div>
     <mat-form-field class="half-width">
       <mat-label>Enter Task Name</mat-label>
-      <input type="text" matInput #message placeholder="Min. 5 characters" [(ngModel)]="data.name" [ngModelOptions]="{standalone: true}">
+      <input type="text" matInput #message placeholder="Min. 5 characters" formControlName="editName" [(ngModel)]="data.name">
     </mat-form-field>
 
     <mat-form-field class="quarter-width">
       <mat-label>Choose a date</mat-label>
-      <input type="text" matInput [matDatepicker]="picker" [(ngModel)]="data.deadline" [ngModelOptions]="{standalone: true}">
+      <input type="text" matInput [matDatepicker]="picker" formControlName="editDeadline" [(ngModel)]="data.deadline">
       <mat-datepicker-toggle matSuffix [for]="picker">
       </mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -17,7 +17,7 @@
 
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="[data.name, data.deadline]">Ok</button>
+    <button mat-button type="submit" [mat-dialog-close]="[data.name, data.deadline]" [disabled]="!editForm.valid">Ok</button>
   </div>
 
   </form>

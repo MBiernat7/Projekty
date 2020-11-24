@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { TaskService } from '../task.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Task } from '../task';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-dialog',
@@ -11,20 +11,19 @@ import { Task } from '../task';
 export class EditDialogComponent implements OnInit {
 
   task: Task = {name: '', deadline: '', done: false};
-  tasks: Task[] = this.taskService.getTasks()
 
-  constructor(private taskService: TaskService, public dialogRef: MatDialogRef<EditDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Task) { }
+  editForm = new FormGroup({
+    editName: new FormControl('', [Validators.minLength(5), Validators.required]),
+    editDeadline: new FormControl('', Validators.required),
+  });
+
+  constructor(public dialogRef: MatDialogRef<EditDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Task) { }
 
   ngOnInit(): void {
-    this.getTasks();
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-  }
-
-  getTasks(): void {
-    this.taskService.getTasks();
   }
 
 }
