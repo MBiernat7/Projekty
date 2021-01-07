@@ -1,10 +1,24 @@
 <div class="wrapper">
 
-  <div class="container">
-    <p>{{weather?.name}}</p>
-    <p>{{weather?.main.temp}}C</p>
-    <p>{{weather?.weather[0].description}}</p>
-    <p>{{weather?.main.humidity}}%</p>
+  <div class="container" *ngIf="weather">
+    <div class="left">
+      <img class="w-icon" [src]="weather.icon">
+      <p class="description">{{weather.description | titlecase}}</p>
+      <div class="temp-min-max">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">vertical_align_bottom</mat-icon>
+        {{weather.temp_min}}°
+        <mat-icon aria-hidden="false" aria-label="Example home icon">vertical_align_top</mat-icon>{{weather.temp_max}}°
+      </div>
+      <p class="temperature">{{weather.temperature}}°</p>
+    </div>
+    <div class="right">
+      <h2 class="city-name">{{weather.name}}</h2>
+      <p class="time">{{weather.date * 1000 | date: 'short'}}</p>
+      <div class="humidity-pressure">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">opacity</mat-icon>{{weather.humidity}}%
+        <mat-icon aria-hidden="false" aria-label="Example home icon">speed</mat-icon>{{weather.pressure}}hPa
+      </div>
+    </div>
   </div>
 
 </div>

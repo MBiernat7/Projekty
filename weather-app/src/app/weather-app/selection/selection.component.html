@@ -1,8 +1,13 @@
-<form class="example-form" [formGroup]="selectForm" (ngSubmit)="getCity(city.value)">
-  <mat-form-field class="example-full-width">
-    <mat-label>City Name or zip code</mat-label>
-    <input matInput #message #city formControlName="city">
-    <mat-hint align="start"><strong>Type more than one character to search</strong> </mat-hint>
-  </mat-form-field>
-  <button type="submit" mat-raised-button color="primary" [disabled]="!selectForm.valid">Search</button>
-</form>
+<div class="d-flex">
+  <form class="example-form" [formGroup]="selectForm" (ngSubmit)="getCity(city.value)">
+    <mat-form-field class="example-full-width">
+      <mat-label>City Name or zip code</mat-label>
+      <input matInput #message #city formControlName="city">
+      <mat-hint align="start"><strong>Type more than one character to search</strong> </mat-hint>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!selectForm.valid">Search</button>
+  </form>
+  <button class="location" (click)="getLocation()">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">near_me</mat-icon>
+  </button>
+</div>

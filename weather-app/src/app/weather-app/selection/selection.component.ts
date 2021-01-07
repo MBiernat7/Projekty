@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { WeatherApiResponse } from '../interfaces/weather';
 import { WeatherDataService } from '../service/weather-data.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { WeatherDataService } from '../service/weather-data.service';
 })
 export class SelectionComponent implements OnInit {
 
-  weather: object = {};
+  lon: any;
+  lat: any;
 
   selectForm = new FormGroup({
     city: new FormControl('', [Validators.minLength(2), Validators.required])
@@ -18,12 +20,22 @@ export class SelectionComponent implements OnInit {
   constructor(private weatherData: WeatherDataService) { }
 
   ngOnInit(): void {
+    navigator.geolocation.getCurrentPosition((position) => {
+      (this.lat = position.coords.latitude, this.lon = position.coords.longitude);
+    });
   }
 
   getCity(city: string) {
-    this.weatherData.getWeatherDataByCity(city).subscribe(data => this.weather = data);
+    this.weatherData.getWeatherDataByCity(city).subscribe(data => {
+      this.weatherData.setWeatherData(data as WeatherApiResponse);
+    });
+  }
 
-    this.weatherData.setWeatherData(this.weather);
+  getLocation() {
+    console.log(this.lat, this.lon)
+    this.weatherData.getWeatherDataByCords(this.lat, this.lon).subscribe(data => {
+      this.weatherData.setWeatherData(data as WeatherApiResponse);
+    })
   }
 
 }

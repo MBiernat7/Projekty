@@ -1,9 +1,35 @@
+.d-flex {
+  display: flex;
+  justify-content: center;
+}
+
 .example-form {
   display: flex;
   justify-content: center;
+  margin: 25px 0;
 }
 
 mat-form-field {
   min-width: 250px;
   max-width: 400px;
+}
+
+mat-icon {
+  margin-top: 5px;
+  color: rgb(189, 189, 189);
+}
+
+.location {
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  outline: none;
+}
+
+.location:hover {
+  opacity: 0.8;
+}
+
+form button {
+  margin: 10px 0 10px 10px;
 }
